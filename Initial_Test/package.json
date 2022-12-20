@@ -1,0 +1,14 @@
+{
+  "name": "Initial_Test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "initial-test/initial-test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}

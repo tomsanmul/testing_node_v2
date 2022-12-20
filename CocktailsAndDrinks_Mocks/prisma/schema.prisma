@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model clientes {
+  ID_CLIENTES  Int       @id @default(autoincrement()) @db.UnsignedInt
+  RAZON_SOCIAL String    @db.VarChar(45)
+  CIF          String    @db.VarChar(45)
+  DIRECCION    String    @db.VarChar(45)
+  TELEFONO     String    @db.VarChar(45)
+  EMAIL        String    @db.VarChar(45)
+  pedidos      pedidos[]
+}
+
+model empleados {
+  ID_EMP    Int    @id @default(autoincrement()) @db.UnsignedInt
+  NOMBRE    String @db.VarChar(45)
+  APELLIDOS String @db.VarChar(45)
+  NIF       String @db.VarChar(45)
+  EMAIL     String @db.VarChar(45)
+  ID_ROL    Int    @db.UnsignedInt
+  DIRECCION String @db.VarChar(45)
+  roles     roles  @relation(fields: [ID_ROL], references: [ID_ROL], onDelete: NoAction, onUpdate: NoAction, map: "FK_empleados_1")
+
+  @@index([ID_ROL], map: "FK_empleados_1")
+}
+
+model pedidos {
+  ID_SOLICITUD      Int       @id @default(autoincrement()) @db.UnsignedInt
+  ID_PEDIDO         Int       @db.UnsignedInt
+  ID_CLIENTES       Int       @db.UnsignedInt
+  ID_PRODUCTO       Int       @db.UnsignedInt
+  PVP               Int       @db.UnsignedInt
+  DIRECCION_ENTREGA String    @db.VarChar(45)
+  UNIDADES          Int       @db.UnsignedInt
+  clientes          clientes  @relation(fields: [ID_CLIENTES], references: [ID_CLIENTES], onDelete: NoAction, onUpdate: NoAction, map: "FK_pedidos_1")
+  productos         productos @relation(fields: [ID_PRODUCTO], references: [ID_PRODUCTO], onDelete: NoAction, onUpdate: NoAction, map: "FK_pedidos_2")
+
+  @@index([ID_CLIENTES], map: "FK_pedidos_1")
+  @@index([ID_PRODUCTO], map: "FK_pedidos_2")
+}
+
+model productos {
+  ID_PRODUCTO         Int               @id @default(autoincrement()) @db.UnsignedInt
+  DENOMINACION        String            @db.VarChar(45)
+  PVP                 Int
+  RATIO               Int
+  P_NETO              Int
+  ID_VINO             Int               @db.UnsignedInt
+  EXISTENCIAS         Int
+  ID_TIPO_PROVEEDOR   Int               @db.UnsignedInt
+  DENOMINACION_ORIGEN String?           @db.VarChar(45)
+  pedidos             pedidos[]
+  tipos_vinos         tipos_vinos       @relation(fields: [ID_VINO], references: [ID_VINO], onDelete: NoAction, onUpdate: NoAction, map: "FK_productos_1")
+  tipos_proveedores   tipos_proveedores @relation(fields: [ID_TIPO_PROVEEDOR], references: [ID_TIPO_PROVEEDOR], onDelete: NoAction, onUpdate: NoAction, map: "FK_productos_2")
+
+  @@index([ID_VINO], map: "FK_productos_1")
+  @@index([ID_TIPO_PROVEEDOR], map: "FK_productos_2")
+}
+
+model roles {
+  ID_ROL    Int         @id @default(autoincrement()) @db.UnsignedInt
+  ROL       String      @db.VarChar(45)
+  empleados empleados[]
+}
+
+model tipos_proveedores {
+  ID_TIPO_PROVEEDOR Int         @id @default(autoincrement()) @db.UnsignedInt
+  TIPO_PROVEEDOR    String      @db.VarChar(45)
+  productos         productos[]
+}
+
+model tipos_vinos {
+  ID_VINO   Int         @id @default(autoincrement()) @db.UnsignedInt
+  CATEGORIA String      @db.VarChar(45)
+  productos productos[]
+}

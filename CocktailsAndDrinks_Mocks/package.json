@@ -1,0 +1,31 @@
+{
+  "name": "Initial_Test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jest",
+    "dev": "export NODE_ENV=development && node src/app",
+    "pro": "export NODE_ENV=production && node src/app"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "@databases/sqlite": "^4.0.2",
+    "@prisma/client": "^4.7.1",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jest-mock-extended": "^3.0.1",
+    "path": "^0.12.7",
+    "prisma": "^4.7.1",
+    "sinon": "^15.0.0",
+    "supertest": "^6.3.3",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
+}
