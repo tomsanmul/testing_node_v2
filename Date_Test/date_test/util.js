@@ -15,4 +15,14 @@ const formattedDateRu = (date) => format(date, 'MMMM dd, yyyy', { locale: russia
 const daysBetween = (startDate, endDate) => differenceInDays(endDate, startDate);
 const workdaysBetween = (startDate, endDate) => differenceInBusinessDays(endDate, startDate);
 
+export{
+    orderdates,
+    substring,
+    formatDate1,
+    formatDate2,
+    formattedDateRu,
+    daysBetween,
+    workdaysBetween
+}
+
 
