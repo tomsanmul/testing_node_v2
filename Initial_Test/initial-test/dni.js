@@ -1,0 +1,13 @@
+
+function ComprovaDNI(dni) {
+
+    const letra = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+    
+    let numDNI = parseInt(dni);
+    calculo = numDNI % 23;
+
+    return letra[calculo];
+   
+}
+
+module.exports = ComprovaDNI;
