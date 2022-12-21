@@ -12,7 +12,7 @@ const {
    formattedDateRu,
    daysBetween,
    workdaysBetween
-  } = require('./__test__/utils.js');
+  } = require('../date_test/util');
   
   
   
