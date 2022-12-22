@@ -29,7 +29,7 @@ test('Test orderdates', () => {
   
   
 test('daysBetween', () => {
-    expect(daysBetween([new Date(1987, 1, 11), new Date(1987, 1, 12)])).toBe(1);
+    expect(daysBetween(new Date(2022, 12, 22), new Date(2022, 12, 27))).toBe(5);
   });
   
   
