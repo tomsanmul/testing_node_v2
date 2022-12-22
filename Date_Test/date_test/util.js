@@ -16,6 +16,10 @@ const daysBetween = (startDate, endDate) => differenceInDays(endDate, startDate)
 const workdaysBetween = (startDate, endDate) => differenceInBusinessDays(endDate, startDate);
 
 
+
+console.log(daysBetween(new Date(2022, 12, 22), new Date(2022, 12, 27)));
+
+
 module.exports = {
     orderdates,
     substring,
@@ -25,4 +29,3 @@ module.exports = {
     daysBetween,
     workdaysBetween
 }
-
