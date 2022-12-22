@@ -13,5 +13,4 @@ function ComprovaDNI(dni) {
    
 }
 
-console.log(ComprovaDNI("38dsdr113164"));
 module.exports = ComprovaDNI;
